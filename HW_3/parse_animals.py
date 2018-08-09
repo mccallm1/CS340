@@ -18,6 +18,7 @@ def main():
 		}
 
 	f = open("bitmap.txt", "w")
+
 	with open('animals.txt', 'r') as csvfile:
 		spamreader = csv.reader(csvfile, delimiter=',')
 		rowCount = 0
