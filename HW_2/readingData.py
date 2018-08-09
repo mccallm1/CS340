@@ -13,9 +13,7 @@ def main():
 			headerIndex = 0
 
 			#This is one way to iterate through all of the attribute columns with their corresponding headers
-			for attributeName in header:
-				print(attributeName)
-				print('\t' + row[headerIndex])
+			for attributeName in heade				print('\t' + row[headerIndex])
 				headerIndex += 1
 				print()
 			print('------------------------------------------')
@@ -25,12 +23,12 @@ def main():
 			parsedLine = json.loads(row[1])
 			print(parsedLine)
 			print('------------------------------------------')
-			
+
 			#First dictionary
 			print('First Dictionary')
 			print(parsedLine[0])
 			print('------------------------------------------')
-			
+
 			#Key and values
 			print('Key and Values')
 			print()
