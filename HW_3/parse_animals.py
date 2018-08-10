@@ -1,7 +1,17 @@
 import csv
 import json
 
-def main():
+def lexo_sort(list_name, output_name):
+	entries_array = sorted(open(list_name).read().split('\n'))
+	f = open(output_name, "w")
+	for row in entries_array:
+		if row != "":
+			insert = row + "\n"
+			f.write(insert)
+			print(row)
+
+def gen_bitmap(animal_file, bitmap_file):
+
 	animal_list = {
 		'cat':'1000',
 		'dog':'0100',
@@ -9,26 +19,29 @@ def main():
 		'bird':'0001'
 		}
 
-	age_list = ['1000000000','0100000000','0010000000','0001000000','0000100000',
-				'0000010000','0000001000','0000000100','0000000010','0000000001']
+	age_list = [
+		'1000000000','0100000000','0010000000','0001000000','0000100000',
+		'0000010000','0000001000','0000000100','0000000010','0000000001'
+		]
 
 	adopted_list = {
 		'True':'10',
 		'False':'01'
 		}
 
-	f = open("bitmap.txt", "w")
+	f = open(bitmap_file, "w")
 
-	with open('animals.txt', 'r') as csvfile:
+	with open(animal_file, 'r') as csvfile:
 		spamreader = csv.reader(csvfile, delimiter=',')
-		rowCount = 0
-
 		for row in spamreader:
+			print(row, end=":     ")
+
 			concat_entry = ""
+
 			# Animal type
 			concat_entry += str(animal_list[row[0]])
 
-			# Age Bracket
+			# Age bracket
 			age = int(row[1])
 			if age >= 1 and age <= 10:
 				concat_entry += str(age_list[0])
@@ -53,14 +66,23 @@ def main():
 
 			# Adpoted bool
 			concat_entry += str(adopted_list[row[2]])
+
 			print(concat_entry)
 
 			concat_entry += "\n"
 			f.write(str(concat_entry))
 
-			#if rowCount == 3:
-			#	break
-			rowCount += 1
+def main():
+	# Generate bitmap for unsorted list
+	print("Generating unsorted bitmap...")
+	gen_bitmap("data/animals_test.txt", "results/bitmap.txt")
+
+	# Sort list, then generate another bitmap
+	print("Sorting original list...")
+	lexo_sort("data/animals_test.txt", "results/animals_sorted.txt")
+
+	#print("Generating sorted bitmap...")
+	gen_bitmap("results/animals_sorted.txt", "results/bitmap_sorted.txt")
 
 if __name__ == '__main__':
 	main()
