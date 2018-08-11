@@ -160,7 +160,7 @@ def main():
 	# File paths
 	animal_input_file = "data/animals_test.txt"
 	animal_output_file = "results/animals_sorted.txt"
-	bitmap_unsorted = "results/bitmap.txt"
+	bitmap_unsorted = "results/bitmap_unsorted.txt"
 	bitmap_sorted = "results/bitmap_sorted.txt"
 
 	# Generate bitmap for unsorted list
