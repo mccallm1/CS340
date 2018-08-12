@@ -158,7 +158,7 @@ def compress_64(bitmap_input, comp_output):
 
 def main():
 	# File paths
-	animal_input_file = "data/animals_test.txt"
+	animal_input_file = "data/animals.txt"
 	animal_output_file = "results/animals_sorted.txt"
 	bitmap_unsorted = "results/bitmap_unsorted.txt"
 	bitmap_sorted = "results/bitmap_sorted.txt"
